@@ -31,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if UserDefaults.standard.value(forKey: PlaySoundsViewController.SliderValueKey) == nil {
             UserDefaults.standard.set(0.0, forKey: PlaySoundsViewController.SliderValueKey)
+        } else {
+            let value = UserDefaults.standard.float(forKey: PlaySoundsViewController.SliderValueKey)
+            print("App Started with \(PlaySoundsViewController.SliderValueKey) of \(value)")
         }
         print("App Delegate: did finish launching")
         

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AUR-3Y-cHj">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AUR-3Y-cHj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,10 +15,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Saq-QV-Hf2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UJT-rt-4u4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auF-vo-P4u">
+                                <rect key="frame" x="157" y="311" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="6Dp-Mp-8vs"/>
                                     <constraint firstAttribute="height" constant="100" id="m0i-de-Ybg"/>
@@ -31,6 +32,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e26-gZ-Oag">
+                                <rect key="frame" x="157" y="311" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ERd-h9-Lge"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="h9t-VG-lBH"/>
@@ -45,6 +47,7 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1000" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wrF-Xc-MhI">
+                                <rect key="frame" x="55" y="433" width="304" height="31"/>
                                 <color key="tintColor" red="0.10196078431372549" green="0.21568627450980393" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="ezG-2q-kjd"/>
@@ -83,10 +86,11 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUe-cl-9yR">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
                                 <state key="normal" image="microphone">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -95,11 +99,13 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywq-xV-hl8">
+                                <rect key="frame" x="177" y="511" width="61" height="20"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
                                 <color key="textColor" red="0.14509803921568626" green="0.28235294117647058" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3d-XT-Xtp">
+                                <rect key="frame" x="157" y="673" width="100" height="100"/>
                                 <state key="normal" image="stop">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -125,10 +131,10 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="OaR-6y-mzM"/>
-                                <exclude reference="LB0-Y2-GjL"/>
-                                <exclude reference="qFE-mE-FuN"/>
                                 <exclude reference="Awz-mV-03p"/>
                                 <exclude reference="SL9-eY-Ocs"/>
+                                <exclude reference="LB0-Y2-GjL"/>
+                                <exclude reference="qFE-mE-FuN"/>
                                 <exclude reference="qpk-0G-oF7"/>
                             </mask>
                         </variation>
@@ -140,10 +146,10 @@
                             </mask>
                             <mask key="constraints">
                                 <include reference="OaR-6y-mzM"/>
-                                <include reference="LB0-Y2-GjL"/>
-                                <include reference="qFE-mE-FuN"/>
                                 <include reference="Awz-mV-03p"/>
                                 <include reference="SL9-eY-Ocs"/>
+                                <include reference="LB0-Y2-GjL"/>
+                                <include reference="qFE-mE-FuN"/>
                                 <include reference="qpk-0G-oF7"/>
                             </mask>
                         </variation>
@@ -166,7 +172,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AUR-3Y-cHj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FuZ-YK-eT0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

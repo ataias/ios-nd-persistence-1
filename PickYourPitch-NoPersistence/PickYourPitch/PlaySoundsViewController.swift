@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Combine
 
 // MARK: - PlaySoundsViewController: UIViewController
 
@@ -20,6 +21,7 @@ class PlaySoundsViewController: UIViewController {
     var receivedAudio:RecordedAudio!
     var audioEngine:AVAudioEngine!
     var audioFile:AVAudioFile!
+    var sliderViewCancellable: AnyCancellable?
     
     // MARK: Outlets
     
@@ -50,6 +52,16 @@ class PlaySoundsViewController: UIViewController {
 
         // TODO initialize sliderView.value from user defaults here
         sliderView.value = UserDefaults.standard.float(forKey: Self.SliderValueKey)
+//        sliderViewCancellable = sliderView.publisher(for: \.value)
+//            .sink {
+//                UserDefaults.standard.set($0, forKey: Self.SliderValueKey)
+//                print("Updated \(Self.SliderValueKey) to \($0)")
+//            }
+//        sliderViewCancellable = sliderView.publisher(for: UIControl.Event.valueChanged)
+//            .sink {
+//                UserDefaults.standard.set($0, forKey: Self.SliderValueKey)
+//                print("Updated \(Self.SliderValueKey) to \($0)")
+//            }
 
     }
     
@@ -67,6 +79,7 @@ class PlaySoundsViewController: UIViewController {
         
         // Get the pitch from the slider
         let pitch = sliderView.value
+        print("My Read Pitch: \(pitch)")
         
         // Play the sound
         playAudioWithVariablePitch(pitch)
@@ -83,7 +96,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func sliderDidMove(_ sender: UISlider) {
-        print("Slider vaue: \(sliderView.value)")
+        print("[MOVE] Slider value: \(sliderView.value)")
     }
     
     // MARK: Play Audio
