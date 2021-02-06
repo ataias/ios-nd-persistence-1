@@ -14,8 +14,8 @@ import AVFoundation
 class PlaySoundsViewController: UIViewController {
 
     // MARK: Properties
-    
-    let SliderValueKey = "Slider Value Key"
+
+    static let SliderValueKey = "PitchValue"
     var audioPlayer:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
     var audioEngine:AVAudioEngine!
@@ -47,6 +47,10 @@ class PlaySoundsViewController: UIViewController {
         }
         
         setUserInterfaceToPlayMode(false)
+
+        // TODO initialize sliderView.value from user defaults here
+        sliderView.value = UserDefaults.standard.float(forKey: Self.SliderValueKey)
+
     }
     
     // MARK: Set Interface

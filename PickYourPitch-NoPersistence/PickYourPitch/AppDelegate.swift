@@ -28,7 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
+        if UserDefaults.standard.value(forKey: PlaySoundsViewController.SliderValueKey) == nil {
+            UserDefaults.standard.set(0.0, forKey: PlaySoundsViewController.SliderValueKey)
+        }
         print("App Delegate: did finish launching")
         
         return true

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4236FB8D25CF1535006BE85C /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236FB8C25CF1535006BE85C /* UIControl+Combine.swift */; };
 		4D37A77C1A5B089600294894 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D37A77B1A5B089600294894 /* AppDelegate.swift */; };
 		4D37A7811A5B089600294894 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D37A77F1A5B089600294894 /* Main.storyboard */; };
 		4D37A7831A5B089600294894 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D37A7821A5B089600294894 /* Images.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4236FB8C25CF1535006BE85C /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
 		4D37A7761A5B089600294894 /* PickYourPitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickYourPitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D37A77A1A5B089600294894 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D37A77B1A5B089600294894 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				4D37A79D1A5B095200294894 /* RecordSoundsViewController.swift */,
 				A9CCAFD21D37C43C00E00DAF /* Assets */,
 				4D37A7791A5B089600294894 /* Supporting Files */,
+				4236FB8C25CF1535006BE85C /* UIControl+Combine.swift */,
 			);
 			path = PickYourPitch;
 			sourceTree = "<group>";
@@ -113,7 +116,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = Udacity;
 				TargetAttributes = {
 					4D37A7751A5B089600294894 = {
@@ -161,6 +164,7 @@
 				4D37A79F1A5B095200294894 /* RecordedAudio.swift in Sources */,
 				4D37A79E1A5B095200294894 /* PlaySoundsViewController.swift in Sources */,
 				4D37A7A01A5B095200294894 /* RecordSoundsViewController.swift in Sources */,
+				4236FB8D25CF1535006BE85C /* UIControl+Combine.swift in Sources */,
 				4D37A77C1A5B089600294894 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +214,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -234,7 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -265,6 +270,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -282,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
