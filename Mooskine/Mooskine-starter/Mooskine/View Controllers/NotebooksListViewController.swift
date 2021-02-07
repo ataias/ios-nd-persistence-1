@@ -181,7 +181,7 @@ extension NotebooksListViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
         default:
-            break
+            fatalError("Case not implemented")
         }
     }
 }
