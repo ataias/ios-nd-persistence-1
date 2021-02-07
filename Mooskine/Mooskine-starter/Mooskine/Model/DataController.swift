@@ -25,17 +25,27 @@ class DataController {
             if let error = error {
                 fatalError(error.localizedDescription)
             }
+            self.autoSaveViewContext(interval: 3)
             completion?()
         }
     }
 }
 
-//extension NSManagedObjectContext {
-//    /// Wrap a check to `hasChanges` and then `save` for an [NSManagedObjectContext](https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext)
-//    func save() throws {
-//        // TODO how to handle save errors here? maybe use result instead of throws and any caller just gets the error message? it would have to always parse both in a switch...
-//        if self.hasChanges {
-//            try self.save()
-//        }
-//    }
-//}
+extension DataController {
+    // this helps to save data before an app crashes, when it might not call an explicit save
+    func autoSaveViewContext(interval: TimeInterval = 15) {
+        print("autosaving")
+        guard interval > 0 else {
+            print("cannot set negative autosave interval")
+            return
+        }
+        if viewContext.hasChanges {
+            try? viewContext.save()
+        }
+        // if you use a timer instead you can stop this auto save afterwards
+        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+
+            self.autoSaveViewContext(interval: interval)
+        }
+    }
+}

@@ -67,7 +67,6 @@ class NotesListViewController: UIViewController, UITableViewDataSource {
     func addNote() {
         let note = Note(context: dataController.viewContext)
         note.notebook = notebook
-        note.creationDate = Date()
         note.text = "My New Note \(notes.count+1)\n\(note.creationDate!)\n"
         try? dataController.viewContext.save()
         notes.insert(note, at: 0)
