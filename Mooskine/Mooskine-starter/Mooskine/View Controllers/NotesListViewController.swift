@@ -68,7 +68,7 @@ class NotesListViewController: UIViewController, UITableViewDataSource {
         let note = Note(context: dataController.viewContext)
         note.notebook = notebook
         note.creationDate = Date()
-        note.text = "My New Note\n\(note.creationDate!)\n"
+        note.text = "My New Note \(notes.count+1)\n\(note.creationDate!)\n"
         try? dataController.viewContext.save()
         notes.insert(note, at: 0)
         tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
@@ -145,6 +145,7 @@ class NotesListViewController: UIViewController, UITableViewDataSource {
         if let vc = segue.destination as? NoteDetailsViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 vc.note = note(at: indexPath)
+                vc.dataController = dataController
 
                 vc.onDelete = { [weak self] in
                     if let indexPath = self?.tableView.indexPathForSelectedRow {
