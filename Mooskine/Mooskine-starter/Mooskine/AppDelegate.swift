@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         dataController.load()
+
+        // inject data controller... I guess this is better than simply declaring the thing as static and calling it from the views, as this can be more modular
+        let navigationController = window?.rootViewController as! UINavigationController
+        let notebooksListViewController = navigationController.topViewController as! NotebooksListViewController
+        notebooksListViewController.dataController = dataController
         return true
     }
 

@@ -29,3 +29,13 @@ class DataController {
         }
     }
 }
+
+//extension NSManagedObjectContext {
+//    /// Wrap a check to `hasChanges` and then `save` for an [NSManagedObjectContext](https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext)
+//    func save() throws {
+//        // TODO how to handle save errors here? maybe use result instead of throws and any caller just gets the error message? it would have to always parse both in a switch...
+//        if self.hasChanges {
+//            try self.save()
+//        }
+//    }
+//}
