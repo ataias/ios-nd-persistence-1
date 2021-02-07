@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class NotesListViewController: UIViewController, UITableViewDataSource {
+class NotesListViewController: UIViewController {
     /// A table view that displays a list of notes for a notebook
     @IBOutlet weak var tableView: UITableView!
 
     /// The notebook whose notes are being displayed
     var notebook: Notebook!
-    var fetchedResultsController: NSFetchedResultsController<Note>!
+    var listDataSource: ListDataSource<Note, NoteCell>!
 
     var dataController: DataController!
 
@@ -26,21 +26,6 @@ class NotesListViewController: UIViewController, UITableViewDataSource {
         return df
     }()
 
-    fileprivate func setupFetchedResultsController() {
-        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        fetchRequest.predicate = NSPredicate(format: "notebook == %@", notebook)
-
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "notebook-\(notebook.name!)")
-        fetchedResultsController.delegate = self
-
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("The fetch could not be executed: \(error.localizedDescription)")
-        }
-
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +33,7 @@ class NotesListViewController: UIViewController, UITableViewDataSource {
         navigationItem.title = notebook.name
         navigationItem.rightBarButtonItem = editButtonItem
 
-        setupFetchedResultsController()
+        setupListDataSource()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -79,58 +64,14 @@ class NotesListViewController: UIViewController, UITableViewDataSource {
     func addNote() {
         let note = Note(context: dataController.viewContext)
         note.notebook = notebook
-        let count = fetchedResultsController.sections?[0].numberOfObjects ?? 0
+        let count = listDataSource.fetchedResultsController.sections?[0].numberOfObjects ?? 0
         note.text = "My New Note \(count + 1)\n\(note.creationDate!)\n"
         try? dataController.viewContext.save()
-    }
-
-    // Deletes the `Note` at the specified index path
-    func deleteNote(at indexPath: IndexPath) {
-        let noteToDelete = fetchedResultsController.object(at: indexPath)
-        dataController.viewContext.delete(noteToDelete)
-        try? dataController.viewContext.save()
-    }
-
-    func updateEditButtonState() {
-        if let sections = fetchedResultsController.sections {
-            navigationItem.rightBarButtonItem?.isEnabled = sections[0].numberOfObjects > 0
-        }
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
-    }
-
-    // -------------------------------------------------------------------------
-    // MARK: - Table view data source
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let aNote = fetchedResultsController.object(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.defaultReuseIdentifier, for: indexPath) as! NoteCell
-
-        // Configure cell
-        cell.textPreviewLabel.text = aNote.text
-        if let creationDate = aNote.creationDate {
-            cell.dateLabel.text = dateFormatter.string(from: creationDate)
-        }
-
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete: deleteNote(at: indexPath)
-        default: () // Unsupported
-        }
     }
 
     // -------------------------------------------------------------------------
@@ -141,42 +82,30 @@ class NotesListViewController: UIViewController, UITableViewDataSource {
         // and its delete action
         if let vc = segue.destination as? NoteDetailsViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
-                vc.note = fetchedResultsController.object(at: indexPath)
+                vc.note = listDataSource.fetchedResultsController.object(at: indexPath)
                 vc.dataController = dataController
 
                 vc.onDelete = { [weak self] in
                     if let indexPath = self?.tableView.indexPathForSelectedRow {
-                        self?.deleteNote(at: indexPath)
+                        self?.listDataSource.delete(at: indexPath)
                         self?.navigationController?.popViewController(animated: true)
                     }
                 }
             }
         }
     }
-}
 
-extension NotesListViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
+    // MARK: Data Source
+    fileprivate func setupListDataSource() {
+        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchRequest.predicate = NSPredicate(format: "notebook == %@", notebook)
 
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-//        updateEditButtonState()
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-            updateEditButtonState()
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-            if tableView.numberOfRows(inSection: 0) == 0 {
-                setEditing(false, animated: true)
+        listDataSource = ListDataSource(tableView: tableView, managedObjectContext: dataController.viewContext, fetchRequest: fetchRequest, configure: { (cell, note) in
+            cell.textPreviewLabel.text = note.text
+            if let creationDate = note.creationDate {
+                cell.dateLabel.text = self.dateFormatter.string(from: creationDate)
             }
-        default:
-            break
-        }
+        })
     }
 }

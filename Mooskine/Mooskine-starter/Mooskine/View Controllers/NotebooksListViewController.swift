@@ -38,14 +38,12 @@ class NotebooksListViewController: UIViewController {
 //        fetchedResultsController = nil
     }
 
-    // -------------------------------------------------------------------------
     // MARK: - Actions
 
     @IBAction func addTapped(sender: Any) {
         presentNewNotebookAlert()
     }
 
-    // -------------------------------------------------------------------------
     // MARK: - Editing
 
     /// Display an alert prompting the user to name a new notebook. Calls
@@ -93,7 +91,6 @@ class NotebooksListViewController: UIViewController {
 
 
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If this is a NotesListViewController, we'll configure its `Notebook`
         if let vc = segue.destination as? NotesListViewController {
@@ -120,5 +117,3 @@ class NotebooksListViewController: UIViewController {
     }
 
 }
-
-

@@ -53,12 +53,16 @@ class ListDataSource<ObjectType: NSManagedObject, CellType: UITableViewCell & Ce
         return fetchedResultsController.sections?.count ?? 1
     }
 
+    public func delete(at indexPath: IndexPath) {
+        let objectToDelete = fetchedResultsController.object(at: indexPath)
+        managedObjectContext.delete(objectToDelete)
+        try? managedObjectContext.save()
+    }
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            let objectToDelete = fetchedResultsController.object(at: indexPath)
-            managedObjectContext.delete(objectToDelete)
-            try? managedObjectContext.save()
+            delete(at: indexPath)
         default: () // Unsupported
         }
     }
@@ -71,7 +75,6 @@ class ListDataSource<ObjectType: NSManagedObject, CellType: UITableViewCell & Ce
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
-//        updateEditButtonState()
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -81,9 +84,6 @@ class ListDataSource<ObjectType: NSManagedObject, CellType: UITableViewCell & Ce
 
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
-//            if controller.sections?[0].numberOfObjects == 0 {
-//                setEditing(false, animated: true)
-//            }
         default:
             break
         }
