@@ -65,7 +65,7 @@ class NotesListViewController: UIViewController {
         let note = Note(context: dataController.viewContext)
         note.notebook = notebook
         let count = listDataSource.fetchedResultsController.sections?[0].numberOfObjects ?? 0
-        note.text = "My New Note \(count + 1)\n\(note.creationDate!)\n"
+        note.attributedText = NSAttributedString(string: "My New Note \(count + 1)\n\(note.creationDate!)\n")
         try? dataController.viewContext.save()
     }
 
@@ -102,7 +102,7 @@ class NotesListViewController: UIViewController {
         fetchRequest.predicate = NSPredicate(format: "notebook == %@", notebook)
 
         listDataSource = ListDataSource(tableView: tableView, managedObjectContext: dataController.viewContext, fetchRequest: fetchRequest, configure: { (cell, note) in
-            cell.textPreviewLabel.text = note.text
+            cell.textPreviewLabel.attributedText = note.attributedText
             if let creationDate = note.creationDate {
                 cell.dateLabel.text = self.dateFormatter.string(from: creationDate)
             }
