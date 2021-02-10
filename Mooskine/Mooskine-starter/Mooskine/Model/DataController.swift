@@ -34,7 +34,7 @@ class DataController {
 extension DataController {
     // this helps to save data before an app crashes, when it might not call an explicit save
     func autoSaveViewContext(interval: TimeInterval = 15) {
-        print("autosaving")
+//        print("autosaving")
         guard interval > 0 else {
             print("cannot set negative autosave interval")
             return

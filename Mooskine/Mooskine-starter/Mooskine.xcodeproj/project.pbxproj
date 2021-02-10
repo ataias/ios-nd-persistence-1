@@ -21,6 +21,7 @@
 		422CD15A25D2B04A005AD314 /* UpdateToAttributedStrings.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 422CD15925D2B04A005AD314 /* UpdateToAttributedStrings.xcmappingmodel */; };
 		422CD15E25D2B10B005AD314 /* NSEntityMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CD15D25D2B10B005AD314 /* NSEntityMigrationPolicy.swift */; };
 		4236FB9D25CF30A6006BE85C /* Mooskine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4236FB9B25CF30A6006BE85C /* Mooskine.xcdatamodeld */; };
+		42680E0925D3E337007B0FF4 /* Pathifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42680E0825D3E337007B0FF4 /* Pathifier.swift */; };
 		42C083DD25D0783800700309 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C083DC25D0783800700309 /* ListDataSource.swift */; };
 		42FF309425CFD75600F813F4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FF309325CFD75600F813F4 /* DataController.swift */; };
 		42FF30A025CFFB4000F813F4 /* Notebook+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FF309F25CFFB4000F813F4 /* Notebook+Extensions.swift */; };
@@ -42,7 +43,7 @@
 
 /* Begin PBXFileReference section */
 		039B10581EDC5469002EA94F /* Mooskine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mooskine.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		039B105B1EDC5469002EA94F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Mooskine/AppDelegate.swift; sourceTree = "<group>"; };
+		039B105B1EDC5469002EA94F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		039B10601EDC5469002EA94F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		039B10621EDC5469002EA94F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		039B10651EDC5469002EA94F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		422CD15925D2B04A005AD314 /* UpdateToAttributedStrings.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = UpdateToAttributedStrings.xcmappingmodel; sourceTree = "<group>"; };
 		422CD15D25D2B10B005AD314 /* NSEntityMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEntityMigrationPolicy.swift; sourceTree = "<group>"; };
 		4236FB9C25CF30A6006BE85C /* Mooskine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mooskine.xcdatamodel; sourceTree = "<group>"; };
+		42680E0825D3E337007B0FF4 /* Pathifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pathifier.swift; sourceTree = "<group>"; };
 		42C083DC25D0783800700309 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
 		42FF309325CFD75600F813F4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		42FF309F25CFFB4000F813F4 /* Notebook+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+Extensions.swift"; sourceTree = "<group>"; };
@@ -90,7 +92,6 @@
 		039B104F1EDC5469002EA94F = {
 			isa = PBXGroup;
 			children = (
-				039B105B1EDC5469002EA94F /* AppDelegate.swift */,
 				039B105A1EDC5469002EA94F /* Mooskine */,
 				039B106F1EDC5469002EA94F /* MooskineTests */,
 				039B10591EDC5469002EA94F /* Products */,
@@ -109,12 +110,14 @@
 		039B105A1EDC5469002EA94F /* Mooskine */ = {
 			isa = PBXGroup;
 			children = (
+				039B105B1EDC5469002EA94F /* AppDelegate.swift */,
 				03B2698C1F2F831700C7433C /* Model */,
 				03B2698F1F2F833D00C7433C /* View Controllers */,
 				03B269931F2F837C00C7433C /* Views */,
 				039B107D1EDC55B1002EA94F /* Assets */,
 				039B107C1EDC55AB002EA94F /* Storyboards */,
 				039B10671EDC5469002EA94F /* Info.plist */,
+				42680E0825D3E337007B0FF4 /* Pathifier.swift */,
 			);
 			path = Mooskine;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				03B2699D1F2F8AA100C7433C /* NotesListViewController.swift in Sources */,
 				42C083DD25D0783800700309 /* ListDataSource.swift in Sources */,
 				03B2699F1F2F8AAA00C7433C /* NoteCell.swift in Sources */,
+				42680E0925D3E337007B0FF4 /* Pathifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
